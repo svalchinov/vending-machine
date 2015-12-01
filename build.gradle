@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.5
+
+task deploy(type: Copy) {
+    from war.archivePath
+    into "/usr/local/Cellar/tomcat/7.0.56/libexec/webapps"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'javax.servlet:javax.servlet-api:3.0.1'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+
+
